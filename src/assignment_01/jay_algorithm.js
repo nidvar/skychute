@@ -44,43 +44,48 @@ const algo_check = (the_string)=>{
     })
 
     // Remainging tests to eliminate impurities:
-    let op = []
-    let cl = []
 
     let one = []
     let two = []
     let three = []
 
+    let one_cl = []
+    let two_cl = []
+    let three_cl = []
+
     x.forEach(a=>{
-        if(a=='(' || a == ')'){
+        if(a=='('){
             one.push(a)
         }
-        if(a=='{' || a == '}'){
+        if(a=='{'){
             two.push(a)
         }
-        if(a=='[' || a == ']'){
+        if(a=='['){
             three.push(a)
         }
 
-        if(opening.includes(a)){
-            op.push(a)
+        if(a == ')'){
+            one_cl.push(a)
         }
-        if(closing.includes(a)){
-            cl.push(a)
+        if(a == '}'){
+            two_cl.push(a)
+        }
+        if(a == ']'){
+            three_cl.push(a)
         }
     })
+
     //Test number of opening brackets to closing brackets of EACH TYPE.
-    if(one.length%2!=0 || two.length%2!=0 || three.length%2!=0){
+    if(one.length!= one_cl.length || two.length!= two_cl.length || three.length!= three_cl.length){
         console.log('fail. Odd number')
         return
     }
     
-    if(op.length!=cl.length){
-        result = 'fail'
-    }
+    
+
     if(result!='fail'){
         console.log('win')
     }
 }
 
-algo_check('(()}')
+algo_check('(([]}}')
