@@ -1,7 +1,8 @@
 const algo_check = (the_string)=>{
     let result;
-    // Put brackets into an array
     let y = the_string
+
+    // Put brackets into an array
     let x = the_string.split('');
 
     // Create bracket template:
@@ -32,21 +33,42 @@ const algo_check = (the_string)=>{
         return
     }
 
-    const bad_stuff = ['{]', '{)', '[}', '[)', '(}', '(]']
-
-    bad_stuff.forEach(a=>{
+    //If any of these are included, then fail
+    const bad_combination = ['{]', '{)', '[}', '[)', '(}', '(]']
+    bad_combination.forEach(a=>{
         if(y.includes(a)){
-            console.log('fail fail fail')
+            console.log('bad_combination')
             result = 'fail'
             return
         }
     })
 
-    if(result == 'fail'){
-        console.log('fail')
-    }else{
-        console.log('win !!!')
+    // Remainging tests to eliminate impurities:
+    let one = []
+    let two = []
+    let three = []
+
+    x.forEach(a=>{
+        if(a=='(' || a == ')'){
+            one.push(a)
+        }
+        if(a=='{' || a == '}'){
+            two.push(a)
+        }
+        if(a=='[' || a == ']'){
+            three.push(a)
+        }
+    })
+    //Test number of opening brackets to closing brackets of EACH TYPE.
+    if(one.length%2!=0 || two.length%2!=0 || three.length%2!=0){
+        console.log('fail. Odd number')
+        return
+    }
+    
+    if(result!='fail'){
+        console.log('win')
     }
 }
 
-algo_check('()()()({}[]())')
+
+algo_check('(()){{({[]}){}{}}}')
