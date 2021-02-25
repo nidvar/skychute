@@ -81,8 +81,6 @@ const algo_check = (the_string)=>{
         return
     }
     
-    
-
     if(result!='fail'){
         console.log('win')
     }
