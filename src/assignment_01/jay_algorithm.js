@@ -1,16 +1,14 @@
 const algo_check = (the_string)=>{
-    let result;
-    let y = the_string
-
+    let result = true;
     // Put brackets into an array
     let x = the_string.split('');
 
     //If any of these are included, then fail
     const bad_combination = ['{]', '{)', '[}', '[)', '(}', '(]']
     bad_combination.forEach(a=>{
-        if(y.includes(a)){
+        if(the_string.includes(a)){
             console.log('bad_combination')
-            result = 'fail'
+            result = false
             return
         }
     })
@@ -29,12 +27,9 @@ const algo_check = (the_string)=>{
 
     if(open.length!=close.length){
         console.log('fail. Odd number')
-        return
+        result = false
     }
-    
-    if(result!='fail'){
-        console.log('win')
-    }
+    return result
 }
 
-algo_check('(({)}(){})')
+console.log(algo_check('((()))))'))
