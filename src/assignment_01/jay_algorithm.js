@@ -44,6 +44,9 @@ const algo_check = (the_string)=>{
     })
 
     // Remainging tests to eliminate impurities:
+    let op = []
+    let cl = []
+
     let one = []
     let two = []
     let three = []
@@ -58,6 +61,13 @@ const algo_check = (the_string)=>{
         if(a=='[' || a == ']'){
             three.push(a)
         }
+
+        if(opening.includes(a)){
+            op.push(a)
+        }
+        if(closing.includes(a)){
+            cl.push(a)
+        }
     })
     //Test number of opening brackets to closing brackets of EACH TYPE.
     if(one.length%2!=0 || two.length%2!=0 || three.length%2!=0){
@@ -65,10 +75,12 @@ const algo_check = (the_string)=>{
         return
     }
     
+    if(op.length!=cl.length){
+        result = 'fail'
+    }
     if(result!='fail'){
         console.log('win')
     }
 }
 
-
-algo_check('(()){{({[]}){}{}}}')
+algo_check('(()}')
