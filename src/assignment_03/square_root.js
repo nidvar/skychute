@@ -23,6 +23,7 @@ const square_root_jay=(integer)=>{
         
         
         if(middle==Math.floor((end+start)/2)){
+            middle = 'no square root. closest is ' + middle
             break;
         }
 
@@ -32,6 +33,6 @@ const square_root_jay=(integer)=>{
     return middle
 }
 
-console.log(square_root_jay(25))
+console.log(square_root_jay(20))
 
 console.log('finished')
